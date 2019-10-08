@@ -47,7 +47,16 @@ async def time_check():
             soup = BeautifulSoup(html, "html.parser")
 
             # Find all photo containers
-            containers = soup.findAll('a',{'class':'ipsUserPhoto_mini'})
+            containers = soup.findAll('a',{'class':'ipsUserPhoto_medium'})
+
+            containers.pop(0)
+            containers.pop(0)
+
+            i = 0
+            # Increase the (current 2) to the amount of leaders/mods/owners
+            while i < 2:
+                containers.pop(0)
+                i = i + 1
             
             # Scraping info from site
             for container in containers:
