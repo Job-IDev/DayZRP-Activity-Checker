@@ -47,17 +47,8 @@ async def time_check():
             soup = BeautifulSoup(html, "html.parser")
 
             # Find all photo containers
-            containers = soup.findAll('a',{'class':'ipsUserPhoto'})
-
-            # Just removing first 2 (just the group containers)
-            containers.pop(0)
-            containers.pop(0)
-            # Change the (currently 2) into the amount of mods and leaders (otherwise it would print double)
-            # TODO: Change amount of mods and leaders
-            i = 0
-            while i < 2:
-                containers.pop(0)
-                i = i + 1
+            containers = soup.findAll('a',{'class':'ipsUserPhoto_mini'})
+            
             # Scraping info from site
             for container in containers:
                 alt = container.img['alt']
